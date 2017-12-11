@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.administrator.thematch.views.screen.Subcribe.SubcribeActivity;
 import com.example.administrator.thematch.views.screen.match.MatchActivity;
 
 import java.util.ArrayList;
@@ -92,7 +93,7 @@ public class ActivityThree extends AppCompatActivity implements  AdapterView.OnI
                         break;
 
                     case R.id.ic_books:
-                        Intent intent2 = new Intent(ActivityThree.this, ActivityTwo.class);
+                        Intent intent2 = new Intent(ActivityThree.this, SubcribeActivity.class);
                         startActivity(intent2);
                         break;
 

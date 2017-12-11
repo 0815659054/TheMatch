@@ -10,13 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.thematch.models.TeamModel;
+
 import java.util.List;
 
 /**
  * Created by NgocTri on 10/22/2016.
  */
-public class GridViewAdapter extends ArrayAdapter<Product> {
-    public GridViewAdapter(Context context, int resource, List<Product> objects) {
+public class GridViewAdapter extends ArrayAdapter<TeamModel> {
+    public GridViewAdapter(Context context, int resource, List<TeamModel> objects) {
         super(context, resource, objects);
     }
 
@@ -29,14 +31,14 @@ public class GridViewAdapter extends ArrayAdapter<Product> {
             LayoutInflater inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             v = inflater.inflate(R.layout.grid_item, null);
         }
-        Product product = getItem(position);
+        TeamModel team = getItem(position);
         ImageView img = (ImageView) v.findViewById(R.id.imageView);
         TextView txtTitle = (TextView) v.findViewById(R.id.txtTitle);
-        //TextView txtDescription = (TextView) v.findViewById(R.id.txtDescription);
+        TextView txtDescription = (TextView) v.findViewById(R.id.txtDescription);
 
-        img.setImageResource(product.getImageId());
-        txtTitle.setText(product.getTitle());
-        //txtDescription.setText(product.getDescription());
+        //img.setImageResource(product.getImageId());
+        txtTitle.setText(team.name);
+        //txtDescription.setText(team.name);
 
         return v;
     }

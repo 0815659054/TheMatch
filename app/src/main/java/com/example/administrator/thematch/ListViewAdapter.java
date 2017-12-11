@@ -9,14 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.administrator.thematch.models.TeamModel;
+
 import java.util.List;
 
 /**
  * Created by NgocTri on 10/22/2016.
  */
 
-public class ListViewAdapter extends ArrayAdapter<Product> {
-    public ListViewAdapter(Context context, int resource, List<Product> objects) {
+public class ListViewAdapter extends ArrayAdapter<TeamModel> {
+    public ListViewAdapter(Context context, int resource, List<TeamModel> objects) {
         super(context, resource, objects);
     }
 
@@ -30,14 +32,14 @@ public class ListViewAdapter extends ArrayAdapter<Product> {
             v = inflater.inflate(R.layout.list_item, null);
 
         }
-        Product product = getItem(position);
+        TeamModel team = getItem(position);
         ImageView img = (ImageView) v.findViewById(R.id.imageView);
         TextView txtTitle = (TextView) v.findViewById(R.id.txtTitle);
         TextView txtDescription = (TextView) v.findViewById(R.id.txtDescription);
 
-        img.setImageResource(product.getImageId());
-        txtTitle.setText(product.getTitle());
-        txtDescription.setText(product.getDescription());
+//        img.setImageResource(product.getImageId());
+        txtTitle.setText(team.name);
+        txtDescription.setText(team.stadium);
 
         return v;
     }

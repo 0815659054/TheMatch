@@ -83,18 +83,8 @@ public class Tab0Fragment extends Fragment  {
                 ViewHolder viewHolder = new ViewHolder();
                 viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.list_item_thumbnail);
                 viewHolder.title = (TextView) convertView.findViewById(R.id.list_item_text1);
-                viewHolder.button = (ImageButton) convertView.findViewById(R.id.list_item_btn);
                 convertView.setTag(viewHolder);
             }
-            mainViewholder = (ViewHolder) convertView.getTag();
-            mainViewholder.button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(getContext(), "Button was clicked for list item " + position, Toast.LENGTH_SHORT).show();
-                }
-            });
-            mainViewholder.title.setText(getItem(position));
-
             return convertView;
         }
     }
@@ -102,6 +92,5 @@ public class Tab0Fragment extends Fragment  {
 
         ImageView thumbnail;
         TextView title;
-        ImageButton button;
     }
 }

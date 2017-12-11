@@ -20,17 +20,15 @@
 
 
     <TextView
-        android:id="@+id/state"
-
+        android:id="@+id/date_match_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/list_item_tex2"
-
-        android:layout_below="@+id/list_item_tex2"
+        android:layout_alignStart="@+id/team_2_name_text_view"
+        android:layout_below="@+id/team_2_name_text_view"
         android:text="Day" />
 
     <TextView
-        android:id="@+id/list_item_text1"
+        android:id="@+id/team_1_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
@@ -40,15 +38,15 @@
         android:text="This is row number 1" />
 
     <TextView
-        android:id="@+id/list_item_tex2"
+        android:id="@+id/team_2_name_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/list_item_text1"
-        android:layout_below="@+id/list_item_text1"
+        android:layout_alignStart="@+id/team_1_name_text_view"
+        android:layout_below="@+id/team_1_name_text_view"
         android:text="This is row number 1" />
 
     <TextView
-        android:id="@+id/list_item_text3"
+        android:id="@+id/team_1_score_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -57,12 +55,12 @@
         android:text="0" />
 
     <TextView
-        android:id="@+id/list_item_text4"
+        android:id="@+id/team_2_score_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/list_item_text3"
-        android:layout_alignStart="@+id/list_item_text3"
-        android:layout_below="@+id/list_item_text1"
+        android:layout_alignEnd="@+id/team_1_score_text_view"
+        android:layout_alignStart="@+id/team_1_score_text_view"
+        android:layout_below="@+id/team_1_name_text_view"
         android:text="0" />
 
 

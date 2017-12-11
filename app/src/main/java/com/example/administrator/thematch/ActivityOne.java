@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.administrator.thematch.views.screen.match.MatchActivity;
+
 /**
  * Created by User on 4/15/2017.
  */
@@ -37,7 +39,7 @@ public class ActivityOne extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.ic_arrow:
-                        Intent intent0 = new Intent(ActivityOne.this, Main.class);
+                        Intent intent0 = new Intent(ActivityOne.this, MatchActivity.class);
                         startActivity(intent0);
                         break;
 

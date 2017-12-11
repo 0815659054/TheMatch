@@ -12,8 +12,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.administrator.thematch.views.screen.match.MatchActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,7 @@ public class ActivityThree extends AppCompatActivity implements  AdapterView.OnI
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.ic_arrow:
-                        Intent intent0 = new Intent(ActivityThree.this, Main.class);
+                        Intent intent0 = new Intent(ActivityThree.this, MatchActivity.class);
                         startActivity(intent0);
                         break;
 

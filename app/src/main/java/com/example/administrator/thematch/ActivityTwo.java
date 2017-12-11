@@ -13,13 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.administrator.thematch.views.screen.match.MatchActivity;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.ArrayList;
@@ -81,7 +80,7 @@ public class ActivityTwo extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.ic_arrow:
-                        Intent intent0 = new Intent(ActivityTwo.this, Main.class);
+                        Intent intent0 = new Intent(ActivityTwo.this, MatchActivity.class);
                         startActivity(intent0);
                         break;
 

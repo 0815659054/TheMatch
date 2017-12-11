@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">TheMatch</string>
+    <string name="facebook_app_id">182579275638116</string>
+    <string name="firebase_error_login">firebase_error_login</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#272727"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context="com.example.administrator.thematch.MainActivity"
+    android:weightSum="1">
+
+
+    <!--<android.support.v7.widget.AppCompatButton-->
+    <!--android:id="@+id/btn_subscribe"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Subscribe (topic : promotion)"-->
+    <!--android:textAllCaps="false" />-->
+
+    <!--<android.support.v7.widget.AppCompatButton-->
+    <!--android:id="@+id/btn_un_subscribe"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="UnSubscribe (topic : promotion)"-->
+    <!--android:textAllCaps="false" />-->
+    <ImageView
+        android:id="@+id/img_login"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/football"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+    //android:layout_gravity="center_horizontal" />
+    <!--android:scaleType = "centerCrop"-->
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="177dp"
+        android:layout_height="70dp"
+        android:textColorHighlight="@color/cardview_dark_background"
+        android:text=" Version 1.0.1"
+        android:textSize="10dp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginBottom="11dp"
+        android:layout_alignBottom="@+id/img_login"
+        android:layout_alignLeft="@+id/img_login"
+        android:layout_alignStart="@+id/img_login" />
+    <TextView
+        android:id="@+id/TheMacth"
+        android:layout_width="177dp"
+        android:layout_height="100dp"
+        android:textColorHighlight="@color/cardview_dark_background"
+        android:text="The Macth"
+        android:textSize="22dp"
+        android:textColor="@color/cardview_light_background"
+        android:layout_marginBottom="11dp"
+        android:layout_alignBottom="@+id/img_login"
+        android:layout_alignLeft="@+id/img_login"
+        android:layout_alignStart="@+id/img_login" />
+
+</RelativeLayout>

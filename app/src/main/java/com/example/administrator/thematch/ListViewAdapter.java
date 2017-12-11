@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.administrator.thematch.models.TeamModel;
+import com.example.administrator.thematch.services.AddTeamSubService;
+import com.example.administrator.thematch.services.RemoveTeamSubService;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
 
@@ -19,6 +22,10 @@ import java.util.List;
  */
 
 public class ListViewAdapter extends ArrayAdapter<TeamModel> {
+
+    private AddTeamSubService addTeamSubService = new AddTeamSubService();
+    private RemoveTeamSubService removeTeamSubService = new RemoveTeamSubService();
+
     public ListViewAdapter(Context context, int resource, List<TeamModel> objects) {
         super(context, resource, objects);
     }
@@ -33,8 +40,9 @@ public class ListViewAdapter extends ArrayAdapter<TeamModel> {
             v = inflater.inflate(R.layout.list_item, null);
 
         }
-        TeamModel team = getItem(position);
+        final TeamModel team = getItem(position);
         ImageView img = (ImageView) v.findViewById(R.id.imageView);
+        ImageView subscribeImageView = (ImageView) v.findViewById(R.id.favorite_team_image);
         TextView txtTitle = (TextView) v.findViewById(R.id.txtTitle);
         TextView txtDescription = (TextView) v.findViewById(R.id.txtDescription);
 
@@ -43,6 +51,23 @@ public class ListViewAdapter extends ArrayAdapter<TeamModel> {
                 .into(img);
         txtTitle.setText(team.name);
         txtDescription.setText(team.stadium);
+        if (team.isSubscribed) {
+            subscribeImageView.setImageResource(R.drawable.true1);
+        } else {
+            subscribeImageView.setImageResource(R.drawable.false1);
+        }
+        v.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (team.isSubscribed) {
+                    removeTeamSubService.removeSubscription(team.id, FirebaseInstanceId.getInstance().getToken());
+                } else {
+                    addTeamSubService.addSubscription(team.id, FirebaseInstanceId.getInstance().getToken());
+                }
+                team.isSubscribed = !team.isSubscribed;
+                notifyDataSetChanged();
+            }
+        });
 
         return v;
     }

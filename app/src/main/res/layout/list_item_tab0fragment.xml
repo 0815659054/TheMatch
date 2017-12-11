@@ -2,18 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:descendantFocusability="blocksDescendants">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/state"
-        android:text=" " />
 
     <ImageView
         android:id="@+id/list_item_thumbnail"
@@ -30,11 +24,10 @@
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button2"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_marginStart="13dp"
+        android:layout_alignStart="@+id/list_item_tex2"
 
-        android:text="00:00" />
+        android:layout_below="@+id/list_item_tex2"
+        android:text="Day" />
 
     <TextView
         android:id="@+id/list_item_text1"
@@ -43,7 +36,7 @@
         android:paddingTop="5dp"
         android:layout_alignParentTop="true"
         android:layout_marginStart="12dp"
-        android:layout_toEndOf="@+id/state"
+
         android:text="This is row number 1" />
 
     <TextView
@@ -58,16 +51,15 @@
         android:id="@+id/list_item_text3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="30dp"
+        android:layout_toStartOf="@+id/list_item_thumbnail"
+        android:paddingTop="4dp"
         android:text="0" />
 
     <TextView
         android:id="@+id/list_item_text4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button2"
         android:layout_alignEnd="@+id/list_item_text3"
         android:layout_alignStart="@+id/list_item_text3"
         android:layout_below="@+id/list_item_text1"

@@ -1,81 +1,44 @@
 package com.example.administrator.thematch;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by User on 4/15/2017.
+ */
 
 public class Main extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
 
-    private SectionsPageAdapter mSectionsPageAdapter;
-
-    private ViewPager mViewPager;
-
-
+    private static final String TAG = "ActivityOne";
+    private ArrayList<String> data = new ArrayList<String>();
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
+        ListView lv = (ListView) findViewById(R.id.listview);
+        generateListContent();
+        lv.setAdapter(new MyListAdaper(this, R.layout.list_item_tab0fragment, data));
 
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-
-
-        String weekDay;
-        String Day;
-        int number ;
-        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE yyyy.MM.dd", Locale.US);
-        SimpleDateFormat E = new SimpleDateFormat("E", Locale.US);
-        SimpleDateFormat D = new SimpleDateFormat("d", Locale.US);
-        SimpleDateFormat U = new SimpleDateFormat("u", Locale.US);
-
-
-        // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
-
-
-        tabLayout.setupWithViewPager(mViewPager);
-        //line color
-        //tabLayout.setSelectedTabIndicatorColor(R.color.colorAccent);
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_home_black);
-        for (int i=1; i <=7 ; i++) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DAY_OF_YEAR, i - 4);
-            weekDay = E.format(calendar.getTime());
-            Day = D.format(calendar.getTime());
-            number = Integer.parseInt(U.format(calendar.getTime()));
-            if (number==1) {
-                tabLayout.getTabAt(i).setText("Mo"+"\n"+Day);
-
-            }
-            else if(number==3){
-                tabLayout.getTabAt(i).setText("we"+"\n"+Day);
-            }
-            else {
-                tabLayout.getTabAt(i).setText(weekDay + "\n" + Day);
-            }
-
-            Log.i(Day, String.valueOf(number));
-        }
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
@@ -91,8 +54,8 @@ public class Main extends AppCompatActivity {
                         break;
 
                     case R.id.ic_android:
-                        Intent intent1 = new Intent(Main.this, ActivityOne.class);
-                        startActivity(intent1);
+                        Intent intent0 = new Intent(Main.this, ActivityOne.class);
+                        startActivity(intent0);
                         break;
 
                     case R.id.ic_books:
@@ -115,20 +78,47 @@ public class Main extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        SectionsPageAdapter adapter = new SectionsPageAdapter(getSupportFragmentManager());
-        adapter.addFragment(new Tab0Fragment());
-        adapter.addFragment(new Tab1Fragment());
-        adapter.addFragment(new Tab2Fragment());
-        adapter.addFragment(new Tab3Fragment());
-        adapter.addFragment(new Tab4Fragment());
-        adapter.addFragment(new Tab5Fragment());
-        adapter.addFragment(new Tab6Fragment());
-        adapter.addFragment(new Tab7Fragment());
-        viewPager.setAdapter(adapter);
+    private void generateListContent() {
+        for(int i = 0; i < 55; i++) {
+            data.add("This is row number " + i);
+        }
     }
 
+
+
+    private class MyListAdaper extends ArrayAdapter<String> {
+        private int layout;
+        private List<String> mObjects;
+        private MyListAdaper(Context context, int resource, List<String> objects) {
+            super(context, resource, objects);
+            mObjects = objects;
+            layout = resource;
+        }
+
+        @Override
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            ViewHolder mainViewholder = null;
+            if(convertView == null) {
+                LayoutInflater inflater = LayoutInflater.from(getContext());
+                convertView = inflater.inflate(layout, parent, false);
+                ViewHolder viewHolder = new ViewHolder();
+                viewHolder.thumbnail = (ImageView) convertView.findViewById(R.id.list_item_thumbnail);
+                viewHolder.title = (TextView) convertView.findViewById(R.id.list_item_text1);
+
+                convertView.setTag(viewHolder);
+            }
+            mainViewholder = (ViewHolder) convertView.getTag();
+            mainViewholder.title.setText(getItem(position));
+
+            return convertView;
+        }
+    }
+    public class ViewHolder {
+
+        ImageView thumbnail;
+        TextView title;
+
+    }
 }

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.thematch.models.TeamModel;
 
 import java.util.List;
@@ -37,7 +38,9 @@ public class ListViewAdapter extends ArrayAdapter<TeamModel> {
         TextView txtTitle = (TextView) v.findViewById(R.id.txtTitle);
         TextView txtDescription = (TextView) v.findViewById(R.id.txtDescription);
 
-//        img.setImageResource(product.getImageId());
+        Glide.with(v.getContext())
+                .load(team.image_url)
+                .into(img);
         txtTitle.setText(team.name);
         txtDescription.setText(team.stadium);
 

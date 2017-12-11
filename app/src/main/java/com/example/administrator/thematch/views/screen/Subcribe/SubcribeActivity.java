@@ -27,11 +27,16 @@ import com.example.administrator.thematch.ListViewAdapter;
 import com.example.administrator.thematch.R;
 import com.example.administrator.thematch.models.MatchModel;
 import com.example.administrator.thematch.models.TeamModel;
+import com.example.administrator.thematch.models.TeamSubModel;
+import com.example.administrator.thematch.services.AddTeamSubService;
 import com.example.administrator.thematch.services.GetSubscribeService;
+import com.example.administrator.thematch.services.GetTeamSubService;
 import com.example.administrator.thematch.services.interfaces.GetSubscribeServicelnterface;
 
+import com.example.administrator.thematch.services.interfaces.GetTeamSubServiceInterface;
 import com.example.administrator.thematch.views.screen.match.MatchActivity;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.List;
@@ -55,6 +60,7 @@ public class SubcribeActivity extends AppCompatActivity {
     static final int VIEW_MODE_GRIDVIEW = 1;
 
     private GetSubscribeService getSubscribeService = new GetSubscribeService();
+    private GetTeamSubService getTeamSubService = new GetTeamSubService();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,8 +129,7 @@ public class SubcribeActivity extends AppCompatActivity {
         getSubscribeService.getSubscribeList(new GetSubscribeServicelnterface() {
             @Override
             public void onGetSubscribeSuccess(List<TeamModel> teamList) {
-                mTeamList = teamList;
-                displayList(teamList);
+                findSubscribeTeam(teamList);
             }
 
             @Override
@@ -132,6 +137,49 @@ public class SubcribeActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void findSubscribeTeam(final List<TeamModel> teamList) {
+        getTeamSubService.getTeamSubList(new GetTeamSubServiceInterface() {
+            @Override
+            public void onGetTeamSubListSuccess(List<TeamSubModel> teamSubList) {
+                String currentToken = FirebaseInstanceId.getInstance().getToken();
+                for (TeamModel team : teamList) {
+                    if (findTeamWithIdAndTokenMatch(team, teamSubList, currentToken)) {
+                        team.isSubscribed = true;
+                    }
+                }
+                displayList(teamList);
+            }
+
+            @Override
+            public void onGetTeamSubListFail(DatabaseError error) {
+
+            }
+        });
+    }
+
+    private Boolean findTeamWithIdAndTokenMatch(TeamModel team, List<TeamSubModel> teamSubList, String currentToken) {
+        for (TeamSubModel teamSubModel : teamSubList) {
+            if (team.id.equals(teamSubModel.team_id)) {
+                if (findTokenIdWith(team, teamSubModel, currentToken)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private Boolean findTokenIdWith(TeamModel team, TeamSubModel teamSubModel, String currentToken) {
+        for (String token : teamSubModel.token) {
+            if (token.equals(currentToken)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
     private void displayList(List<TeamModel> teamList) {
         if(VIEW_MODE_LISTVIEW == currentViewMode) {
             listViewAdapter = new ListViewAdapter(this, R.layout.list_item, teamList);

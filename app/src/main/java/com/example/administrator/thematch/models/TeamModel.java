@@ -7,6 +7,7 @@ public class TeamModel {
     public String image_url;
     public String name;
     public String stadium;
+    public Boolean isSubscribed = false;
 
     public TeamModel() {}
 

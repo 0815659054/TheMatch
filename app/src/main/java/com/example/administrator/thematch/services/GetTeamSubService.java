@@ -26,12 +26,12 @@ public class GetTeamSubService {
                     TeamSubModel teamSubModel = childSnapshot.getValue(TeamSubModel.class);
                     teamSubList.add(teamSubModel);
                 }
-                listener.onAddTeamSubListSuccess(teamSubList);
+                listener.onGetTeamSubListSuccess(teamSubList);
             }
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                listener.onAddTeamSubListFail(databaseError);
+                listener.onGetTeamSubListFail(databaseError);
             }
         });
     }

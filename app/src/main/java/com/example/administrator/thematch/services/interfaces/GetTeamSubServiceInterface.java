@@ -7,6 +7,6 @@ import java.util.List;
 
 
 public interface GetTeamSubServiceInterface {
-    void onAddTeamSubListSuccess(List<TeamSubModel> teamSubList);
-    void onAddTeamSubListFail(DatabaseError error);
+    void onGetTeamSubListSuccess(List<TeamSubModel> teamSubList);
+    void onGetTeamSubListFail(DatabaseError error);
 }

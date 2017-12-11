@@ -24,7 +24,7 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Login"></activity>
         <activity android:name=".ActivityOne"></activity>
-        <activity android:name=".ActivityTwo"></activity>
+        <activity android:name=".views.screen.Subcribe.SubcribeActivity"/>
         <activity android:name=".ActivityThree"></activity>
         <activity android:name=".ActivityFour"></activity>
 

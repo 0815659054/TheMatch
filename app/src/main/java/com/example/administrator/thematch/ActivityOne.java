@@ -10,7 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.administrator.thematch.views.screen.Subcribe.SubcribeActivity;
 import com.example.administrator.thematch.views.screen.match.MatchActivity;
+
 
 /**
  * Created by User on 4/15/2017.
@@ -48,7 +50,7 @@ public class ActivityOne extends AppCompatActivity {
                         break;
 
                     case R.id.ic_books:
-                        Intent intent2 = new Intent(ActivityOne.this, ActivityTwo.class);
+                        Intent intent2 = new Intent(ActivityOne.this, SubcribeActivity.class);
                         startActivity(intent2);
                         break;
 

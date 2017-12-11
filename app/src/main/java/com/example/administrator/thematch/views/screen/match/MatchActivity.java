@@ -13,14 +13,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.administrator.thematch.ActivityFour;
 import com.example.administrator.thematch.ActivityOne;
 import com.example.administrator.thematch.ActivityThree;
-import com.example.administrator.thematch.ActivityTwo;
+import com.example.administrator.thematch.views.screen.Subcribe.SubcribeActivity;
 import com.example.administrator.thematch.BottomNavigationViewHelper;
 import com.example.administrator.thematch.R;
 import com.example.administrator.thematch.models.MatchModel;
@@ -28,7 +27,6 @@ import com.example.administrator.thematch.services.GetMatchService;
 import com.example.administrator.thematch.services.interfaces.GetMatchServiceInterface;
 import com.google.firebase.database.DatabaseError;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,7 +37,7 @@ public class MatchActivity extends AppCompatActivity {
 
     ListView listView;
 
-    private static final String TAG = "ActivityOne";
+    private static final String TAG = "MatchActivity";
     private GetMatchService getMatchService = new GetMatchService();
 
     @Override
@@ -64,12 +62,12 @@ public class MatchActivity extends AppCompatActivity {
                         break;
 
                     case R.id.ic_android:
-                        Intent intent0 = new Intent(MatchActivity.this, ActivityOne.class);
-                        startActivity(intent0);
+                        Intent intent1 = new Intent(MatchActivity.this, ActivityOne.class);
+                        startActivity(intent1);
                         break;
 
                     case R.id.ic_books:
-                        Intent intent2 = new Intent(MatchActivity.this, ActivityTwo.class);
+                        Intent intent2 = new Intent(MatchActivity.this, SubcribeActivity.class);
                         startActivity(intent2);
                         break;
 
